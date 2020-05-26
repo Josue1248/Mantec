@@ -1,0 +1,28 @@
+{
+  "name": "mantec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josue1248/Mantec.git"
+  },
+  "author": "Josue Montano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Josue1248/Mantec/issues"
+  },
+  "homepage": "https://github.com/Josue1248/Mantec#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "mongojs": "^3.1.0",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1"
+  }
+}
