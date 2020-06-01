@@ -121,11 +121,25 @@ async function getAll (req, res) {
         collection.find().toArray()
             .then(result => {
                 const users = result.map(user => {
+					let role = 'Empleado';
+					switch(user.role){
+						case '1':
+							role = 'Administrador';
+							break;
+						case '2':
+							role = 'Tecnico';
+							break;
+						case '3':
+							role = 'Empleado';
+							break
+						default:
+							role = 'Empleado'
+					}
                     return {
                         fname: user.fname,
                         lname: user.lname,
                         email: user.username,
-                        role: user.role
+                        role: role
                     }
                 })
                 

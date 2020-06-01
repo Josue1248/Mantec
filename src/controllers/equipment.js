@@ -6,6 +6,7 @@ let uri = 'mongodb://heroku_t75xnp7c:kgd4nfkmrtlac6oce58601pbml@ds127646.mlab.co
 // Finish
 async function addEquip (req, res) {
 	const newEquip = {
+		idNumber: req.body.idNumber,
 		department: req.body.department,
 		type: req.body.type,
 		brand: req.body.brand,
@@ -53,6 +54,7 @@ async function getEquip (req, res) {
 // Finish
 async function updateEquip (req, res) {
 	const updatedEquip = {
+		idNumber: req.doby.idNumber,
 		department: req.body.department,
 		type: req.body.type,
 		brand: req.body.brand,
@@ -109,13 +111,24 @@ async function getAll (req, res) {
         collection.find().toArray()
             .then(result => {
                 const equipment = result.map(equip => {
-                    return {
+					/*
+					return {
+						idNumber: req.doby.idNumber,
 						department: equip.department,
 						type: equip.type,
 						brand: equip.brand,
 						model: equip.model,
 						serialNumber: equip.serialNumber,
 						characteristics: equip.characteristics
+					}
+					*/
+                    return {
+						idNumber: equip.idNumber,
+						department: equip.department,
+						type: equip.type,
+						brand: equip.brand,
+						model: equip.model,
+						serialNumber: equip.serialNumber
                     }
                 })
                 
