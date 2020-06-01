@@ -1,38 +1,73 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Tabs from '../nav-bar/nav-bar'
+import Login from '../login/login'
+import RegisterUser from '../register-user/register-user'
+import RegisterEquip from '../register-equip/register-equip'
+import ResponsiveTable from '../table/responsive-table'
+import Axios from 'axios';
 
 class App extends Component {
-state = {
-	data: null
-};
+	constructor(props){
+        super(props);
+        this.state = {
+            users: []
+        }
+    }
 
 	componentDidMount() {
-		// Call our fetch function below once the component mounts
-		this.callBackendAPI()
-		.then(res => {this.setState({ data: res.express })})
-		.catch(err => console.log(err));
+		/*
+		Axios.get('http://localhost:5000/users/')
+		.then((response)=>{
+			console.log(response)
+			
+			if(response.status === 200){
+				this.handleUsers(response.data);
+            } else {
+                alert("No iniciaste sesion")
+            }
+		})
+		*/
 	}
-		// Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-	callBackendAPI = async () => {
-		const response = await fetch('/express_backend');
-		const body = await response.json();
 
-		if (response.status !== 200) {
-		throw Error(body.message) 
-		}
-		return body;
-	};
+	handleUsers = (users) => {
+		this.setState({users: users})
+	}
 
 	render() {
+		const tabNames = ['Iniciar sesion', 'Registro usuario', 'Registro Equipo']
+		const components = [<Login/>, <RegisterUser />, <RegisterEquip />]
+
 		return (
-		<div className="App">
-			<header className="App-header">
-			<img src={logo} className="App-logo" alt="logo" />
-			<h1 className="App-title">Welcome to React</h1>
-			</header>
-			{/*Render the newly fetched data inside of this.state.data*/}
-			<p className="App-intro">{this.state.data}</p>
+		<div className="container">
+			<Tabs >
+				{tabNames.map((t, keyT) => {
+					return(<div label={t}>
+						{components.map((c, keyC) => {
+							if(keyT === keyC) {
+								return(c)
+							} else {
+								return null
+							}
+						})}
+					</div>)}
+				)}
+			</Tabs>
+			{/*<Login />*/}
+			{/*<RegisterUser />*/}
+			{/*<RegisterEquip />*/}
+			{/*<ResponsiveTable 
+				title='Usuarios'
+				cols={
+					{
+						Nombre: 'Nombre',
+						Apellidos: 'Apellidos',
+						Correo: 'Correo',
+						Rol: 'Rol'
+					}
+				} 
+				rows={this.state.users}
+			/>*/}
 		</div>
 		);
 	}
