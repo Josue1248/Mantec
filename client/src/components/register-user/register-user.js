@@ -120,7 +120,7 @@ class RegisterUser extends Component {
                 <select className="form-control" name="role" onChange={this.handleRole} value={this.state.role}>
                     <option value="1">Administrador</option>
                     <option value="2">Tecnico</option>
-                    <option value="3">Usuario</option>
+                    <option value="3">Empleado</option>
                 </select>
                 <br/>
                 <button className="btn btn-primary" type="submit" disabled={!this.setState} onClick={this.handleAddBtn}>Registrar</button>

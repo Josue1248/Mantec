@@ -1,12 +1,11 @@
 import React from 'react';
-
-import NavItem from '../nav-item/nav-item';
+import NavItem from '../../components/nav-item/nav-item';
 
 export default class Tests extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeTab: 'Iniciar sesion',
+			activeTab: 'Usuarios',
 		};
 	}
 

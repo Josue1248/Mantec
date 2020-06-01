@@ -3,17 +3,10 @@ import React, { Component } from 'react';
 import './responsive-table.css';
 
 class ResponsiveTable extends Component {
-	constructor(props){
-		super(props);
 
-		this.fecthHeaders = this.fecthHeaders.bind(this);
-		this.fecthRows = this.fecthRows.bind(this);
-	}
+	fecthHeaders = () => {
+		const { cols } = this.props;
 
-	fecthHeaders() {
-		const {
-			cols
-		} = this.props;
 		if(cols === undefined) return '';
 		return (
 			<tr>
@@ -26,28 +19,27 @@ class ResponsiveTable extends Component {
 		);
 	}
 
-	fecthRows() {
-		const {
-			rows
-		} = this.props;
+	fecthRows = () => {
+		const { rows } = this.props;
+
 		return ( 
 			rows.map(function(row) {
 				return (<tr>
 					{
 						Object.values(row).map( function(value, idx){
-							return <td data-label={Object.keys(row)[idx]}>{value}</td>
+							return <td data-label = {Object.keys(row)[idx]}>{value}</td>
 						})
 					}
-
 				</tr>)
 			})
 		);
 	}
 	
 	render(){
-		return (<div>
+		return(
+			<div>
 				<h5 className='text-center mt-4'>{this.props.title}</h5>
-				<table className={'responsive-table mt-0' + (this.props.className===undefined ? ' ': this.props.className)}>
+				<table className={'responsive-table mt-0' + (this.props.className === undefined ? ' ' : this.props.className)}>
 					<thead>
 						{
 							this.fecthHeaders()

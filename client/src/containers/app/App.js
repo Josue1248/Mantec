@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import Tabs from '../nav-bar/nav-bar'
+import Users from '../users/users'
+import Equip from '../equip/equip'
+
 import './App.css';
-import Tabs from '../../components/nav-bar/nav-bar'
-import Login from '../../components/login/login'
-import RegisterUser from '../../components/register-user/register-user'
-import RegisterEquip from '../../components/register-equip/register-equip'
-import ResponsiveTable from '../../components/table/responsive-table'
-import Axios from 'axios';
 
 class App extends Component {
 	constructor(props){
@@ -16,18 +14,7 @@ class App extends Component {
     }
 
 	componentDidMount() {
-		/*
-		Axios.get('http://localhost:5000/users/')
-		.then((response)=>{
-			console.log(response)
-			
-			if(response.status === 200){
-				this.handleUsers(response.data);
-            } else {
-                alert("No iniciaste sesion")
-            }
-		})
-		*/
+		console.log('Ok')
 	}
 
 	handleUsers = (users) => {
@@ -35,8 +22,8 @@ class App extends Component {
 	}
 
 	render() {
-		const tabNames = ['Iniciar sesion', 'Registro usuario', 'Registro Equipo']
-		const components = [<Login/>, <RegisterUser />, <RegisterEquip />]
+		const tabNames = ['Usuarios', 'Equipo']
+		const components = [<Users />, <Equip />]
 
 		return (
 			<div>
@@ -53,18 +40,6 @@ class App extends Component {
 						</div>)}
 					)}
 				</Tabs>
-				{/*<ResponsiveTable 
-					title='Usuarios'
-					cols={
-						{
-							Nombre: 'Nombre',
-							Apellidos: 'Apellidos',
-							Correo: 'Correo',
-							Rol: 'Rol'
-						}
-					} 
-					rows={this.state.users}
-				/>*/}
 			</div>
 		);
 	}

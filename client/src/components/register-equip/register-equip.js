@@ -5,7 +5,7 @@ class RegisterEquip extends Component {
     constructor(props){
         super(props);
         this.state = {
-            id: "",
+            idNumber: "",
             department: "",
             type: "",
             brand: "",
@@ -13,6 +13,12 @@ class RegisterEquip extends Component {
             serialNumber: "",
             characteristics: {}
         }
+    }
+
+    handleIdNumber = (event) => {
+        const idNumber = event.target.value;
+
+        this.setState({idNumber: idNumber})
     }
 
     handleDepartment = (event) => {
@@ -56,6 +62,7 @@ class RegisterEquip extends Component {
 
         axios.post("http://localhost:5000/equip/add",
         {
+            idNumber: this.state.idNumber,
             department: this.state.department,
             type: this.state.type,
             brand: this.state.brand,
@@ -78,6 +85,7 @@ class RegisterEquip extends Component {
 
         axios.put('http://localhost:5000/equip/' + this.state.id,
         {
+            idNumber: this.state.idNumber,
             department: this.state.department,
             type: this.state.type,
             brand: this.state.brand,
@@ -98,7 +106,9 @@ class RegisterEquip extends Component {
 render(){
     return(
         <form>
-            <h2 className="form-signin-heading text-center">Registro de equipo</h2>
+            <label className="sr-only">Numero de identificación:</label>
+            <input type="number" name="idNumber" className="form-control" placeholder="Numero" onBlur={this.handleIdNumber} required autoFocus/>
+            <br/>
             <label className="sr-only">Departamento:</label>
             <input type="text" name="department" className="form-control" placeholder="Departamento" onBlur={this.handleDepartment} required autoFocus/>
             <br/>
