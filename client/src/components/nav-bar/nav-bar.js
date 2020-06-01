@@ -43,7 +43,7 @@ export default class Tests extends React.Component {
 					</ul>
 				</div>
 			</nav>
-			<div className='row'>
+			<div className='container'>
 					{children.map((child) => {
 						if (child.props.label !== activeTab) return undefined;
 						return child.props.children;
