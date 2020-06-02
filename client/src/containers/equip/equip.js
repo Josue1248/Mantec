@@ -14,8 +14,6 @@ class Users extends Component {
 	componentDidMount() {
 		Axios.get('http://localhost:5000/equip/')
 		.then((response)=>{
-			console.log(response)
-			
 			if(response.status === 200){
 				this.handleEquipment(response.data);
             } else {

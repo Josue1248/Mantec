@@ -103,33 +103,33 @@ class RegisterEquip extends Component {
         })
     }
 
-render(){
-    return(
-        <form>
-            <label className="sr-only">Numero de identificación:</label>
-            <input type="number" name="idNumber" className="form-control" placeholder="Numero" onBlur={this.handleIdNumber} required autoFocus/>
-            <br/>
-            <label className="sr-only">Departamento:</label>
-            <input type="text" name="department" className="form-control" placeholder="Departamento" onBlur={this.handleDepartment} required autoFocus/>
-            <br/>
-            <label className="sr-only">Tipo:</label>
-            <input type="text" name="type" className="form-control" placeholder="Tipo" onBlur={this.handleType}  required/>
-            <br/>
-            <label className="sr-only">Marca:</label>
-            <input type="text" name="brand" className="form-control" placeholder="Marca" onBlur={this.handleBrand}  required/>
-            <br/>
-            <label className="sr-only">Modelo:</label>
-            <input type="text" name="model" className="form-control" placeholder="Modelo" onBlur={this.handleModel} required/>
-            <br/>
-            <label className="sr-only">Numero de serie:</label>
-            <input type="text" name="serialNumber" className="form-control" placeholder="Numero de serie" onBlur={this.handleSerialNumber}  required/>
-            {/* <label className="sr-only">Caracteristicas:</label>
-            <input type="password" name="password2" className="form-control" placeholder="Repetir contraseña" onBlur={this.handleCharacteristics}  required/> */}
-            <br/>
-            <button className="btn btn-primary" type="submit" disabled={!this.setState} onClick={this.handleAddBtn}>Registrar</button>
-            <button className="btn btn-secondary" type="submit" disabled={!this.setState} onClick={this.handleUpdateBtn}>Modificar</button>
-        </form>)
-}
+    render(){
+        return(
+            <form>
+                <label className="sr-only">Numero de identificación:</label>
+                <input type="number" name="idNumber" className="form-control" placeholder="Numero" onBlur={this.handleIdNumber} required autoFocus/>
+                <br/>
+                <label className="sr-only">Departamento:</label>
+                <input type="text" name="department" className="form-control" placeholder="Departamento" onBlur={this.handleDepartment} required autoFocus/>
+                <br/>
+                <label className="sr-only">Tipo:</label>
+                <input type="text" name="type" className="form-control" placeholder="Tipo" onBlur={this.handleType}  required/>
+                <br/>
+                <label className="sr-only">Marca:</label>
+                <input type="text" name="brand" className="form-control" placeholder="Marca" onBlur={this.handleBrand}  required/>
+                <br/>
+                <label className="sr-only">Modelo:</label>
+                <input type="text" name="model" className="form-control" placeholder="Modelo" onBlur={this.handleModel} required/>
+                <br/>
+                <label className="sr-only">Numero de serie:</label>
+                <input type="text" name="serialNumber" className="form-control" placeholder="Numero de serie" onBlur={this.handleSerialNumber}  required/>
+                {/* <label className="sr-only">Caracteristicas:</label>
+                <input type="password" name="password2" className="form-control" placeholder="Repetir contraseña" onBlur={this.handleCharacteristics}  required/> */}
+                <br/>
+                <button className="btn btn-primary" type="submit" disabled={!this.setState} onClick={this.handleAddBtn}>Registrar</button>
+                <button className="btn btn-secondary" type="submit" disabled={!this.setState} onClick={this.handleUpdateBtn}>Modificar</button>
+            </form>)
+    }
 }
 
 export default RegisterEquip;
