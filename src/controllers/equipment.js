@@ -65,15 +65,15 @@ async function updateEquip (req, res) {
 
 	mongodb.connect(uri, function(err, client){
 		let db = client.db('heroku_t75xnp7c');
-		let users = db.collection('users');
+		let equip = db.collection('equipment');
 
-		users.updateOne({_id: new objectID(req.params.id)},{
+		equip.updateOne({_id: new objectID(req.params.id)},{
 			$set: updatedEquip
 		}, { 
 			upsert: false 
-		}, function(err, user){
+		}, function(err, equip){
 			res.send({
-				msg: "Usuario actualizado"
+				msg: "Equipo actualizado"
 			})
 		});
 
@@ -87,10 +87,10 @@ async function updateEquip (req, res) {
 async function deleteEquip (req, res) {
 	mongodb.connect(uri, function(err, client){
 		let db = client.db('heroku_t75xnp7c');
-		let users = db.collection('equipment');
+		let equip = db.collection('equipment');
 
-		users.deleteOne({
-			username: req.params.id
+		equip.deleteOne({
+			_id: req.params.id
 		})
 
 		client.close(function (err) {
@@ -98,7 +98,7 @@ async function deleteEquip (req, res) {
 		  });
 	});
 	res.send({
-		msg: `Se ha borrado el usuario`
+		msg: `Se ha borrado el equipo`
 	})
 };
 
@@ -106,14 +106,14 @@ async function deleteEquip (req, res) {
 async function getAll (req, res) {
 	mongodb.connect(uri, function(err, client){
         let db = client.db('heroku_t75xnp7c');
-        let collection = db.collection('equipment');
+        let equip = db.collection('equipment');
 
-        collection.find().toArray()
+        equip.find().toArray()
             .then(result => {
                 const equipment = result.map(equip => {
 					/*
 					return {
-						idNumber: req.doby.idNumber,
+						idNumber: equip.idNumber,
 						department: equip.department,
 						type: equip.type,
 						brand: equip.brand,

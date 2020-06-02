@@ -2,11 +2,11 @@ const router = require('express').Router();
 
 const OrderController = require('../controllers/orders');
 
-router.post('/add', ensureAuthenticated, OrderController.addOrder);
-router.get('/:id', ensureAuthenticated, OrderController.getOrder);
-router.put('/:id', ensureAuthenticated, OrderController.updateOrder);
-router.delete('/:id', ensureAuthenticated, OrderController.deleteOrder);
-router.get('/', ensureAuthenticated, OrderController.getAll);
+router.post('/add', OrderController.addOrder);
+router.get('/:id', OrderController.getOrder);
+router.put('/:id', OrderController.updateOrder);
+router.delete('/:id', OrderController.deleteOrder);
+router.get('/', OrderController.getAll);
 
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
