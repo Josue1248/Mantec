@@ -11,7 +11,7 @@ async function addUser (req, res) {
 		lname: req.body.lname,
 		username: req.body.email,
 		password: req.body.password,
-		role: req.body.role
+		role: parseInt(req.body.role)
 	}
 
 	bcrypt.genSalt(10, function(err, salt){
@@ -122,19 +122,21 @@ async function getAll (req, res) {
             .then(result => {
                 const users = result.map(user => {
 					let role = 'Empleado';
+
 					switch(user.role){
-						case '1':
+						case 1:
 							role = 'Administrador';
 							break;
-						case '2':
+						case 2:
 							role = 'Tecnico';
 							break;
-						case '3':
+						case 3:
 							role = 'Empleado';
 							break
 						default:
 							role = 'Empleado'
 					}
+
                     return {
                         fname: user.fname,
                         lname: user.lname,
