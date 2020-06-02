@@ -14,15 +14,12 @@ class Users extends Component {
 	componentDidMount() {
 		Axios.get('http://localhost:5000/users/')
 		.then((response)=>{
-			console.log(response)
-			
 			if(response.status === 200){
 				this.handleUsers(response.data);
             } else {
                 alert("No iniciaste sesion")
             }
 		})
-		
 	}
 
 	handleUsers = (users) => {
@@ -48,17 +45,17 @@ class Users extends Component {
 				<div class="modal fade" id="registerUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Registrar equipo</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-						<RegisterUser />
-						</div>
-						<div class="modal-footer">
-						</div>
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Registrar equipo</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+							<RegisterUser />
+							</div>
+							<div class="modal-footer">
+							</div>
 						</div>
 					</div>
 				</div>
