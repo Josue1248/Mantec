@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Tabs from '../nav-bar/nav-bar'
 import Users from '../users/users'
-import Equip from '../equip/equip'
+import Equipment from '../equip/equip'
+import Orders from '../orders/orders'
 
 import './App.css';
 
@@ -22,8 +23,8 @@ class App extends Component {
 	}
 
 	render() {
-		const tabNames = ['Usuarios', 'Equipo']
-		const components = [<Users />, <Equip />]
+		const tabNames = ['Usuarios', 'Equipo', "Ordenes"]
+		const components = [<Users />, <Equipment />, <Orders /> ]
 
 		return (
 			<div>
